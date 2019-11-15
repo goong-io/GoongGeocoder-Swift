@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name         = "GoongGeocoder"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Goong Geocoding, Autocomplete API for Swift and Objective C"
 
   s.description  = <<-DESC
