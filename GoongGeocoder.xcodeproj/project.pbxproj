@@ -35,17 +35,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE56B8D3237E4D6E003C468D /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				FEE591E1237C114D00319874 /* GoongGeocodeOptions.swift */,
-				FE51C653237D01950080E1F2 /* GoongGeocoder.swift */,
-				FE51C655237D02130080E1F2 /* GoongPlacemark.swift */,
-				FE51C67A237D3CD80080E1F2 /* CoreLocation.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
 		FEE591CC237C0E2300319874 = {
 			isa = PBXGroup;
 			children = (
@@ -66,7 +55,10 @@
 			isa = PBXGroup;
 			children = (
 				FEE591D9237C0E2300319874 /* GoongGeocoder.h */,
-				FE56B8D3237E4D6E003C468D /* Source */,
+				FEE591E1237C114D00319874 /* GoongGeocodeOptions.swift */,
+				FE51C653237D01950080E1F2 /* GoongGeocoder.swift */,
+				FE51C655237D02130080E1F2 /* GoongPlacemark.swift */,
+				FE51C67A237D3CD80080E1F2 /* CoreLocation.swift */,
 				FEE591DA237C0E2300319874 /* Info.plist */,
 			);
 			path = GoongGeocoder;
