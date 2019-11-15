@@ -9,7 +9,7 @@ GoongGeocoder makes it easy to connect your iOS application to the [Goong Geocod
 Specify the following dependency in your [CocoaPods](http://cocoapods.org/) Podfile:
 
 ```podspec
-pod 'GoongGeocoder', '~> 0.0.1'
+pod 'GoongGeocoder', '~> 0.0.2'
 ```
 
 Then `import GoongGeocoder` or `@import GoongGeocoder;`.
