@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../ExampleObjectiveC/ExampleObjectiveC.xcodeproj">
+      location = "group:../../../Desktop/aaaaaa/aaaaaa.xcodeproj">
    </FileRef>
    <FileRef
       location = "self:">

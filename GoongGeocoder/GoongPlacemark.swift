@@ -86,7 +86,18 @@ open class Placemark: NSObject, Codable {
     
 
 }
-
+@objcMembers public class PlaceDetailResult: NSObject, Codable {
+    public let placemark: Placemark?
+    public let status: String?
+    enum CodingKeys: String, CodingKey {
+        case placemark = "result"
+        case status = "status"
+    }
+    public init(status: String?, placemark: Placemark?) {
+          self.status = status
+          self.placemark = placemark
+      }
+}
 // MARK: - GeocodeResult
 @objcMembers public class GeocodeResult: NSObject, Codable {
     public let status: String?

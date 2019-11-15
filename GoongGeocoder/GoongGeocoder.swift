@@ -109,14 +109,18 @@ open class Geocoder: NSObject {
     /**
      A closure (block) to be called when a geocoding request is complete.
 
-     - parameter placemarks: An array of `Placemark` objects. For reverse geocoding requests, this array represents a hierarchy of places, beginning with the most local place, such as an address, and ending with the broadest possible place, which is usually a country. By contrast, forward geocoding requests may return multiple placemark objects in situations where the specified address matched more than one location.
+     - parameter result: `GeocodeResult` objects. For reverse geocoding requests, this object represents a hierarchy of places, beginning with the most local place, such as an address, and ending with the broadest possible place, which is usually a country. By contrast, forward geocoding requests may return multiple placemark objects in situations where the specified address matched more than one location.
 
         If the request was canceled or there was an error obtaining the placemarks, this parameter is `nil`. This is not to be confused with the situation in which no results were found, in which case the array is present but empty.
-     - parameter attribution: A legal notice indicating the source, copyright status, and terms of use of the placemark data.
      - parameter error: The error that occurred, or `nil` if the placemarks were obtained successfully.
      */
     public typealias CompletionHandler = (_ result: GeocodeResult?, _ error: NSError?) -> Void
-
+    /**
+     A closure (block) to be called when a `fetchPlace` request is complete.
+     - parameter result: `PlaceDetailResult` objects.
+     - parameter error: The error that occurred, or `nil` if the placemarks were obtained successfully.
+     */
+    public typealias PlaceDetailCompletionHandler = (_ result: PlaceDetailResult?, _ error: NSError?) -> Void
     /**
      The shared geocoder object.
 
@@ -176,16 +180,12 @@ open class Geocoder: NSObject {
     @objc(geocodeWithOptions:completionHandler:)
     open func geocode(_ options: GeocodeOptions, completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
         let url = urlForGeocoding(options)
-        print("begin request")
         let task = dataTaskWithURL(url, completionHandler: { (data) in
-            print("end request")
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
-                print("begin decode")
                 let result = try decoder.decode(GeocodeResult.self, from: data)
                 // Check if geocoding query failed
-                print("end decode")
                 if let message = result.status, message != "OK" {
                     let apiError = NSError(domain: GoongGeocoderErrorDomain, code: -1, userInfo: ["message" : message])
                     DispatchQueue.main.async {
@@ -196,7 +196,6 @@ open class Geocoder: NSObject {
                 completionHandler(result, nil)
             } catch {
                 completionHandler(nil, error as NSError)
-                print("end decode")
             }
         }) { (error) in
             completionHandler(nil, error)
@@ -204,7 +203,47 @@ open class Geocoder: NSObject {
         task.resume()
         return task
     }
-
+    /**
+     Submits a place detail request to fetch place detail
+     - parameter placeID: the identifier of place
+     - parameter completionHandler: The clousre to call with the resulting `PlaceDetailResult` object, contains a `Placemark` object
+     */
+    @discardableResult
+    @objc(fetchPlace:completionHandler:)
+    open func fetchPlace(from placeID: String, completionHandler: @escaping PlaceDetailCompletionHandler) -> URLSessionDataTask {
+         let params =  [URLQueryItem(name: "api_key", value: accessToken),
+                        URLQueryItem(name: "placeid", value: placeID)]
+        
+        let unparameterizedURL: URL!
+        unparameterizedURL = URL(string: "/Place/Detail", relativeTo: apiEndpoint)!
+        
+        var components = URLComponents(url: unparameterizedURL, resolvingAgainstBaseURL: true)!
+        components.queryItems = params
+        let url = components.url!
+        let task = dataTaskWithURL(url, completionHandler: { (data) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            do {
+                let result = try decoder.decode(PlaceDetailResult.self, from: data)
+                // Check if geocoding query failed
+                if let message = result.status, message != "OK" {
+                    let apiError = NSError(domain: GoongGeocoderErrorDomain, code: -1, userInfo: ["message" : message])
+                    DispatchQueue.main.async {
+                        completionHandler(nil, apiError)
+                    }
+                    return
+                }
+                completionHandler(result, nil)
+            } catch {
+                completionHandler(nil, error as NSError)
+            }
+        }) { (error) in
+            completionHandler(nil, error)
+        }
+        task.resume()
+        return task
+        
+    }
     /**
      Returns a URL session task for the given URL that will run the given blocks on completion or error.
 
