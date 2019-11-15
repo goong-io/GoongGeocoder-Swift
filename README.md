@@ -116,4 +116,15 @@ NSURLSessionDataTask *task = [geocoder geocodeWithOptions:options
 }];
 ```
 
-
+### Place Detail
+_Place Detail_ allows you to fetch detail of a place from it's id
+```swift
+geocoder.fetchPlace(from: <#Place ID#>) { (<#PlaceDetailResult?#>, <#NSError?#>) in
+            <#code#>
+}
+```
+```objc
+[geocoder fetchPlace:@"" completionHandler:^(PlaceDetailResult * _Nullable result, NSError * _Nullable err) {
+        <#code#>
+    }]
+```
