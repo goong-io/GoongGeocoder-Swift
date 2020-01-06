@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../Desktop/aaaaaa/aaaaaa.xcodeproj">
+      location = "group:../../../Desktop/TestAuto/TestAuto.xcodeproj">
    </FileRef>
    <FileRef
       location = "self:">

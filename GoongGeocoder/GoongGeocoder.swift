@@ -88,13 +88,6 @@ extension CLLocation {
     internal convenience init(coordinate: CLLocationCoordinate2D) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
-
-    /**
-     Returns a GeoJSON compatible array of coordinates.
-     */
-    internal func geojson() -> [CLLocationDegrees] {
-        return [coordinate.longitude, coordinate.latitude]
-    }
 }
 
 /**

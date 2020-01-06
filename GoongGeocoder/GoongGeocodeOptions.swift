@@ -52,7 +52,7 @@ open class GeocodeOptions: NSObject {
     internal var params: [URLQueryItem] {
         var params: [URLQueryItem] = []
         if let focalLocation = focalLocation {
-            params.append(URLQueryItem(name: "location", value: "\(focalLocation.coordinate.longitude),\(focalLocation.coordinate.latitude)"))
+            params.append(URLQueryItem(name: "location", value: "\(focalLocation.coordinate.latitude),\(focalLocation.coordinate.longitude)"))
             params.append(URLQueryItem(name: "radius", value: String(radius)))
         }
        

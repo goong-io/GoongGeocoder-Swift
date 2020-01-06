@@ -1,5 +1,37 @@
 
 import CoreLocation
+private struct Location : Codable {
+    let lat : Double!
+    let lng : Double!
+
+    enum CodingKeys: String, CodingKey {
+
+        case lat = "lat"
+        case lng = "lng"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        lat = try values.decodeIfPresent(Double.self, forKey: .lat)
+        lng = try values.decodeIfPresent(Double.self, forKey: .lng)
+    }
+
+}
+
+private struct Geometry : Codable {
+    let location : Location?
+
+    enum CodingKeys: String, CodingKey {
+        case location = "location"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        location = try values.decodeIfPresent(Location.self, forKey: .location)
+    }
+}
+
+
 //MARK: - Placemark
 /**
  A `Placemark` object represents a geocoder result. A placemark associates identifiers, geographic data, and contact information with a particular latitude and longitude. It is possible to explicitly create a placemark object from another placemark object; however, placemark objects are generally created for you via the `Geocoder.geocode(_:completionHandler:)` method.
@@ -20,11 +52,13 @@ open class Placemark: NSObject, Codable {
         placeID = ""// try container.decode(String.self, forKey: .placeID)
         name = try container.decode(String.self, forKey: .name)
         formattedAddress = try container.decodeIfPresent(String.self, forKey: .formattedAddress)
-        
-        if let coordinates = try container.decodeIfPresent(geometryDictionary.self, forKey: .coordinate) {
-            let coordinate = CLLocationCoordinate2D(json: coordinates)
-            location = CLLocation(coordinate: coordinate)
+        do {
+            let geometry = try container.decodeIfPresent(Geometry.self, forKey: .coordinate)
+            location = CLLocation(coordinate: CLLocationCoordinate2DMake(geometry!.location!.lat, geometry!.location!.lng))
+        } catch {
+            print(error)
         }
+        
         
         
     }
