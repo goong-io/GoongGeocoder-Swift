@@ -1,5 +1,10 @@
-
 # GoongGeocoder
+
+
+<p align="center">
+    <img src="https://i.imgur.com/8uyn9m5.png" width="500">
+</p>
+
 
 GoongGeocoder makes it easy to connect your iOS application to the [Goong Geocoding API](https://docs.goong.io/rest/guide/#geocode) and [Goong Autocomplete API](https://docs.goong.io/rest/guide/#place)
 
@@ -21,6 +26,35 @@ This repository includes example applications written in both Swift and Objectiv
 ## Usage
 
 You will need a [Goong API KEY](https://account.goong.io) in order to use the API. If you’re already using the [Goong Maps SDK for iOS](https://docs.goong.io/ios/guide/), GoongGeocoder.swift automatically recognizes your access token, as long as you’ve placed it in the `GoongAccessToken` key of your application’s Info.plist file.
+
+### Autocomplete UI
+
+To use `GoongAutocompleteViewController`, simply present it: 
+```swift
+let vc = GoongAutocompleteViewController()
+vc.delegate = self
+self.navigationController?.present(vc, animated: true, completion: nil)
+```
+```objc
+GoongAutocompleteViewController *vc = [[GoongAutocompleteViewController alloc] init];
+vc.delegate = self;
+[self.navigationController presentViewController:vc animated:YES completion:nil];
+```
+
+Implement `GoongAutocompleteDelegate`, this delegate method called when user tap on a place in tableView:
+
+```swift
+func didSelectPlacemark(_ placemark: Placemark?) {
+    print(placemark.location)
+}
+```
+
+```objc
+- (void)didSelectPlacemark:(GoongPlacemark *)placemark{
+    NSLog(placemark.location);
+}
+```
+
 
 ### Basics
 
@@ -120,11 +154,11 @@ NSURLSessionDataTask *task = [geocoder geocodeWithOptions:options
 _Place Detail_ allows you to fetch detail of a place from it's id
 ```swift
 geocoder.fetchPlace(from: <#Place ID#>) { (<#PlaceDetailResult?#>, <#NSError?#>) in
-            <#code#>
+    <#code#>
 }
 ```
 ```objc
 [geocoder fetchPlace:@"" completionHandler:^(PlaceDetailResult * _Nullable result, NSError * _Nullable err) {
-        <#code#>
-    }]
+    <#code#>
+}]
 ```
