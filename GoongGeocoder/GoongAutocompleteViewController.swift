@@ -1,7 +1,8 @@
 import UIKit
 
 @objc public protocol GoongAutocompleteDelegate {
-    @objc func didSelectPlacemark(_ placemark: Placemark?)
+    @objc func viewController(_ viewController: GoongAutocompleteViewController, didAutocompleteWith place: Placemark?)
+    @objc func viewController(_ viewController: GoongAutocompleteViewController, didFailAutocompleteWithError error: Error?)
 }
 @objc open class GoongAutocompleteViewController: UIViewController {
     var tableView: UITableView!
@@ -156,12 +157,20 @@ extension GoongAutocompleteViewController: UITableViewDelegate, UITableViewDataS
     func fetchPlaceID(_ placeID: String) {
         geocoder.fetchPlace(from: placeID) { (result, err) in
             if let err = err {
-                print(err.localizedDescription)
+                self.dismiss(animated: true) {
+                    self.delegate?.viewController(self, didFailAutocompleteWithError: err)
+                }
             }
             guard let result = result else {
+                self.dismiss(animated: true) {
+                    self.delegate?.viewController(self, didFailAutocompleteWithError: nil)
+                }
                 return
             }
-            self.delegate?.didSelectPlacemark(result.placemark)
+            self.dismiss(animated: true) {
+                self.delegate?.viewController(self, didAutocompleteWith: result.placemark)
+            }
+            
         }
     }
     @objc func handleSectionTap(gesture: UITapGestureRecognizer) {
