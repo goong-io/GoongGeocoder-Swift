@@ -32,13 +32,15 @@ You will need a [Goong API KEY](https://account.goong.io) in order to use the AP
 To use `GoongAutocompleteViewController`, simply present it: 
 ```swift
 let vc = GoongAutocompleteViewController()
+let nav = UINavigationController(rootViewController: vc)
 vc.delegate = self
-self.navigationController?.present(vc, animated: true, completion: nil)
+self.navigationController?.present(nav, animated: true, completion: nil)
 ```
 ```objc
 GoongAutocompleteViewController *vc = [[GoongAutocompleteViewController alloc] init];
+UINavigationController *nav = [UINavigationController alloc] initWithRootViewController:vc];
 vc.delegate = self;
-[self.navigationController presentViewController:vc animated:YES completion:nil];
+[self.navigationController presentViewController:nav animated:YES completion:nil];
 ```
 
 Implement `GoongAutocompleteDelegate`, this delegate method called when user tap on a place in tableView:
