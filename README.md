@@ -44,15 +44,19 @@ vc.delegate = self;
 Implement `GoongAutocompleteDelegate`, this delegate method called when user tap on a place in tableView:
 
 ```swift
-func didSelectPlacemark(_ placemark: Placemark?) {
-    print(placemark.location)
+public func viewController(_ viewController: GoongAutocompleteViewController, didAutocompleteWith place: Placemark?) {
+        print(place?.name)
+        print(place?.location)
+}
+```
+Handle error:
+```swift
+public func viewController(_ viewController: GoongAutocompleteViewController, didFailAutocompleteWithError error: Error?) {
+        print(error?.localizedDescription)
 }
 ```
 
-```objc
-- (void)didSelectPlacemark:(GoongPlacemark *)placemark{
-    NSLog(placemark.location);
-}
+
 ```
 
 
