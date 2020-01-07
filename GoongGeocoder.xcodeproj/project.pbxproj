@@ -10,8 +10,10 @@
 		FE51C654237D01950080E1F2 /* GoongGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE51C653237D01950080E1F2 /* GoongGeocoder.swift */; };
 		FE51C656237D02130080E1F2 /* GoongPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE51C655237D02130080E1F2 /* GoongPlacemark.swift */; };
 		FE51C67B237D3CD90080E1F2 /* CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE51C67A237D3CD80080E1F2 /* CoreLocation.swift */; };
+		FE69C3C823C47E1800AD9425 /* iconLocationPin_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE69C3C523C47E1800AD9425 /* iconLocationPin_gray@2x.png */; };
+		FE69C3C923C47E1800AD9425 /* iconLocationPin_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE69C3C623C47E1800AD9425 /* iconLocationPin_gray@3x.png */; };
+		FE69C3CA23C47E1800AD9425 /* iconLocationPin_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = FE69C3C723C47E1800AD9425 /* iconLocationPin_gray.png */; };
 		FEC3B25823C2EAEE00B120F9 /* GoongAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3B25723C2EAEE00B120F9 /* GoongAutocompleteViewController.swift */; };
-		FEC3B27C23C31CF800B120F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC3B27B23C31CF800B120F9 /* Assets.xcassets */; };
 		FEE591DB237C0E2300319874 /* GoongGeocoder.h in Headers */ = {isa = PBXBuildFile; fileRef = FEE591D9237C0E2300319874 /* GoongGeocoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEE591E2237C114D00319874 /* GoongGeocodeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE591E1237C114D00319874 /* GoongGeocodeOptions.swift */; };
 /* End PBXBuildFile section */
@@ -20,8 +22,10 @@
 		FE51C653237D01950080E1F2 /* GoongGeocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoongGeocoder.swift; sourceTree = "<group>"; };
 		FE51C655237D02130080E1F2 /* GoongPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoongPlacemark.swift; sourceTree = "<group>"; };
 		FE51C67A237D3CD80080E1F2 /* CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocation.swift; sourceTree = "<group>"; };
+		FE69C3C523C47E1800AD9425 /* iconLocationPin_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLocationPin_gray@2x.png"; sourceTree = "<group>"; };
+		FE69C3C623C47E1800AD9425 /* iconLocationPin_gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLocationPin_gray@3x.png"; sourceTree = "<group>"; };
+		FE69C3C723C47E1800AD9425 /* iconLocationPin_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLocationPin_gray.png; sourceTree = "<group>"; };
 		FEC3B25723C2EAEE00B120F9 /* GoongAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoongAutocompleteViewController.swift; sourceTree = "<group>"; };
-		FEC3B27B23C31CF800B120F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEE591D6237C0E2300319874 /* GoongGeocoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoongGeocoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE591D9237C0E2300319874 /* GoongGeocoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoongGeocoder.h; sourceTree = "<group>"; };
 		FEE591DA237C0E2300319874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE69C3C423C47E0000AD9425 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FE69C3C723C47E1800AD9425 /* iconLocationPin_gray.png */,
+				FE69C3C523C47E1800AD9425 /* iconLocationPin_gray@2x.png */,
+				FE69C3C623C47E1800AD9425 /* iconLocationPin_gray@3x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		FEE591CC237C0E2300319874 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +78,8 @@
 				FE51C655237D02130080E1F2 /* GoongPlacemark.swift */,
 				FE51C67A237D3CD80080E1F2 /* CoreLocation.swift */,
 				FEC3B25723C2EAEE00B120F9 /* GoongAutocompleteViewController.swift */,
+				FE69C3C423C47E0000AD9425 /* Assets */,
 				FEE591DA237C0E2300319874 /* Info.plist */,
-				FEC3B27B23C31CF800B120F9 /* Assets.xcassets */,
 			);
 			path = GoongGeocoder;
 			sourceTree = "<group>";
@@ -140,7 +154,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEC3B27C23C31CF800B120F9 /* Assets.xcassets in Resources */,
+				FE69C3CA23C47E1800AD9425 /* iconLocationPin_gray.png in Resources */,
+				FE69C3C923C47E1800AD9425 /* iconLocationPin_gray@3x.png in Resources */,
+				FE69C3C823C47E1800AD9425 /* iconLocationPin_gray@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

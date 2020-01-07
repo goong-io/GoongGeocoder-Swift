@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.source_files  = "GoongGeocoder"
-
+  s.resources = "GoongGeocoder/Assets/*.png"
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.requires_arc = true
