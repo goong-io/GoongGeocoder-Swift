@@ -10,8 +10,20 @@ import UIKit
     var searchBar:UISearchBar?
     var searchedPlaces = [Prediction]()
     let decoder = JSONDecoder()
-    let geocoder = Geocoder.shared
+    var geocoder: Geocoder!
     @objc public weak var delegate: GoongAutocompleteDelegate?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    @objc public convenience init(accessToken: String) {
+        self.init()
+        self.geocoder = Geocoder(accessToken: accessToken)
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override open func viewDidLoad() {
         super.viewDidLoad()
         
