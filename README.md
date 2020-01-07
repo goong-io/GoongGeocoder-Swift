@@ -45,18 +45,15 @@ Implement `GoongAutocompleteDelegate`, this delegate method called when user tap
 
 ```swift
 public func viewController(_ viewController: GoongAutocompleteViewController, didAutocompleteWith place: Placemark?) {
-        print(place?.name)
-        print(place?.location)
+   print(place?.name)
+   print(place?.location)
 }
 ```
 Handle error:
 ```swift
 public func viewController(_ viewController: GoongAutocompleteViewController, didFailAutocompleteWithError error: Error?) {
-        print(error?.localizedDescription)
+   print(error?.localizedDescription)
 }
-```
-
-
 ```
 
 
