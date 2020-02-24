@@ -34,6 +34,7 @@ import UIKit
             self.searchBar!.barTintColor = .white
             self.searchBar!.delegate = self
             self.searchBar!.placeholder = "Search for place";
+            self.searchBar!.showsCancelButton = true
         }
         self.navigationItem.titleView = searchBar
         setupTableview()
@@ -52,27 +53,12 @@ import UIKit
 }
 extension GoongAutocompleteViewController: UISearchBarDelegate {
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.cancelSearching()
-        searchActive = false;
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         searchBar.searchTextField.resignFirstResponder()
-    }
-    
-    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar!.setShowsCancelButton(true, animated: true)
-    }
-    
-    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        self.searchBar!.setShowsCancelButton(false, animated: false)
-    }
-    
-    func cancelSearching(){
-        searchActive = false;
-        self.searchBar!.resignFirstResponder()
-        self.searchBar!.text = ""
     }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
