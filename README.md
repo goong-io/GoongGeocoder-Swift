@@ -25,7 +25,7 @@ This repository includes example applications written in both Swift and Objectiv
 
 ## Usage
 
-You will need a [Goong API KEY](https://account.goong.io) in order to use the API. If you’re already using the [Goong Maps SDK for iOS](https://docs.goong.io/ios/guide/), GoongGeocoder.swift automatically recognizes your access token, as long as you’ve placed it in the `GoongAccessToken` key of your application’s Info.plist file.
+You will need a [Goong API KEY](https://account.goong.io) in order to use the API.
 
 ### Autocomplete UI
 

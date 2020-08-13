@@ -109,7 +109,7 @@ extension GoongAutocompleteViewController: UITableViewDelegate, UITableViewDataS
         cell.backgroundColor = .white
         let separator = UIView()
         separator.frame = CGRect(x: 20, y: cell.frame.size.height - 0.5, width: tableView.frame.size.width - 20, height: 0.5)
-        separator.backgroundColor = .groupTableViewBackground
+        separator.backgroundColor = .systemGroupedBackground
         cell.addSubview(separator)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleSectionTap(gesture:)))
 
